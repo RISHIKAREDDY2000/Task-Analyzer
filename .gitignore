@@ -1,11 +1,8 @@
 node_modules/
-npm-debug.log
+dist/
 .env
-
-/dist
-/.angular
-/.vscode
 .DS_Store
-
-build/
+.angular/
+.vscode/
 coverage/
+build/
