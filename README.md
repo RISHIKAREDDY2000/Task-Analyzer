@@ -5,7 +5,7 @@ Backend is **Node.js (Express)** with a mock `data.json` “DB”. Frontend is *
 
 ---
 
-## ✨ Features
+##  Features
 - **Login** (`/api/login`) with mock JWT + role in response  
 - **RBAC** middleware (Editor vs Reader)  
 - **Analyze** (`/api/analyze`) endpoint that returns a mock summary for provided text  
@@ -15,7 +15,7 @@ Backend is **Node.js (Express)** with a mock `data.json` “DB”. Frontend is *
 
 ---
 
-## 🚀 Quick Start
+##  Quick Start
 ### Backend
 ```bash
 cd backend
