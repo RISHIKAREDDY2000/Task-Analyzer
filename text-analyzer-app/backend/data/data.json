@@ -1,0 +1,32 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "editor1",
+      "password": "editor123",
+      "role": "editor"
+    },
+    {
+      "id": 2,
+      "username": "reader1",
+      "password": "reader123",
+      "role": "reader"
+    }
+  ],
+  "textRecords": [
+    {
+      "id": 1,
+      "originalText": "i am good\n",
+      "summarizedText": "i am good\n",
+      "createdBy": "editor1",
+      "createdAt": "2025-10-30T04:05:39.853Z"
+    },
+    {
+      "id": 2,
+      "originalText": "A paragraph for text analysis should begin with a topic sentence that introduces the main point, followed by evidence from the text to support that point, and then an explanation that analyzes how the evidence supports the claim. This structure creates a focused, well-supported argument that breaks down a piece of text to understand its meaning or effect. A strong concluding sentence wraps up the analysis for that specific point. ",
+      "summarizedText": "A paragraph for text analysis should begin with a ...",
+      "createdBy": "editor1",
+      "createdAt": "2025-10-30T04:06:11.230Z"
+    }
+  ]
+}

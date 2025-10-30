@@ -1,0 +1,90 @@
+<div class="analyzer-container">
+  <div class="header">
+    <h1>Text Analyzer</h1>
+    <div class="user-info">
+      <span class="username">{{ currentUser?.username }}</span>
+      <span class="role-badge" [class.editor]="isEditor" [class.reader]="!isEditor">
+        {{ currentUser?.role }}
+      </span>
+      <button class="btn-logout" (click)="logout()">Logout</button>
+    </div>
+  </div>
+
+  <div class="success-message" *ngIf="successMessage">
+    {{ successMessage }}
+  </div>
+
+  <div class="error-message" *ngIf="errorMessage">
+    {{ errorMessage }}
+  </div>
+
+  <div class="input-section" *ngIf="isEditor">
+    <h3>Analyze New Text</h3>
+    <textarea 
+      [(ngModel)]="textInput" 
+      placeholder="Enter text to analyze..."
+      rows="5"
+      [disabled]="isLoading"
+    ></textarea>
+    <button 
+      class="btn-analyze" 
+      (click)="onAnalyze()"
+      [disabled]="isLoading || !textInput.trim()"
+    >
+      {{ isLoading ? 'Analyzing...' : 'Summarize' }}
+    </button>
+  </div>
+
+  <div class="reader-notice" *ngIf="!isEditor">
+    <p>👁️ You are logged in as a <strong>Reader</strong>. You can view records but cannot create, edit, or delete them.</p>
+  </div>
+
+  <div class="records-section">
+    <h3>Analysis Records</h3>
+    
+    <div class="no-records" *ngIf="records.length === 0">
+      No records available yet.
+    </div>
+
+    <table class="records-table" *ngIf="records.length > 0">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Original Text</th>
+          <th>Summary</th>
+          <th>Created By</th>
+          <th>Created At</th>
+          <th *ngIf="isEditor">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let record of records">
+          <td>{{ record.id }}</td>
+          <td>
+            <div *ngIf="editingId !== record.id">
+              {{ record.originalText }}
+            </div>
+            <textarea 
+              *ngIf="editingId === record.id"
+              [(ngModel)]="editingText"
+              rows="3"
+            ></textarea>
+          </td>
+          <td>{{ record.summarizedText }}</td>
+          <td>{{ record.createdBy }}</td>
+          <td>{{ record.createdAt | date:'short' }}</td>
+          <td *ngIf="isEditor">
+            <div class="action-buttons" *ngIf="editingId !== record.id">
+              <button class="btn-edit" (click)="startEdit(record)">Edit</button>
+              <button class="btn-delete" (click)="deleteRecord(record.id)">Delete</button>
+            </div>
+            <div class="action-buttons" *ngIf="editingId === record.id">
+              <button class="btn-save" (click)="saveEdit(record.id)">Save</button>
+              <button class="btn-cancel" (click)="cancelEdit()">Cancel</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
