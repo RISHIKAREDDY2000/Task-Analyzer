@@ -1,4 +1,5 @@
 # Task Analyzer (Express + Angular)
+# This repository contains a Master’s project developed as part of my graduate coursework.
 
 A simple full-stack app that demonstrates login with role-based access (Editor/Reader) and a text analysis endpoint.  
 Backend is **Node.js (Express)** with a mock `data.json` “DB”. Frontend is **Angular** (standalone) with a minimal UI for login and analyze.
